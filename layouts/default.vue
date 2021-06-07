@@ -1,13 +1,22 @@
 <template>
-  <div class="columns">
-    <div class="column is-8">
-      <Nuxt />
-    </div>
+  <div>
+    <Navbar />
+    <div class="container">
+      <div class="columns is-mobile">
+        <div class="column main-page-contents">
+          <Nuxt />
+        </div>
+      </div> <!-- .columns -->
+    </div> <!-- .container -->
   </div>
 </template>
 
 <script>
-export default {
+import Navbar from '@/components/Navbar.vue'
 
+export default {
+  components: {
+    Navbar
+  }
 }
 </script>
