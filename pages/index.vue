@@ -6,7 +6,8 @@
 
 <script>
 import Card from '@/components/Card.vue'
-import sdkClient from '@/plugins/contentful.js'
+// import sdkClient from '@/plugins/contentful.js'
+import { mapState } from 'vuex'
 
 export default {
   name: 'HomePage',
@@ -15,34 +16,9 @@ export default {
     Card
   },
 
-  async asyncData ({ env }) {
-    let posts = []
-    await sdkClient.getEntries({
-      content_type: 'blogPost',
-      order: '-fields.publishedAt'
-    }).then((res) => {
-      posts = res.items
-    }).catch(console.error)
-    return { posts }
-  },
-
-  data () {
-    return {
-      posts: [
-        {
-          fields: {
-            title: 'これはテストです。',
-            publishedAt: new Date()
-          }
-        },
-        {
-          fields: {
-            title: 'これはテスト２です。',
-            publishedAt: new Date()
-          }
-        }
-      ]
-    }
+  computed: {
+    ...mapState(['posts'])
   }
+
 }
 </script>
